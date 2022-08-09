@@ -3,10 +3,12 @@ package gamestates;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import shaders.ShimmerShader;
 
 class PlayState extends FlxState
 {
 	public var uncleFred:FlxSprite;
+	public var uncleFredShader:ShimmerShader;
 
 	override public function create()
 	{
@@ -15,6 +17,10 @@ class PlayState extends FlxState
 		uncleFred = new FlxSprite().loadGraphic(Paths.png('uncle fred'));
 		uncleFred.screenCenter();
 		add(uncleFred);
+		uncleFred.antialiasing = true;
+
+		uncleFredShader = new ShimmerShader();
+		uncleFred.shader = uncleFredShader;
 	}
 
 	public function addFredAlpha(alphaAddition:Float)
@@ -27,8 +33,11 @@ class PlayState extends FlxState
 		uncleFred.alpha = newAlpha;
 	}
 
+	public var totalElapsed:Float = 0;
+
 	override public function update(elapsed:Float)
 	{
+		totalElapsed += elapsed;
 		super.update(elapsed);
 
 		var kp = FlxG.keys.pressed;
@@ -46,5 +55,10 @@ class PlayState extends FlxState
 					case 2:
 						trace(uncleFred.alpha);
 				}
+
+		if (uncleFredShader.totalElapsed.value != null)
+			uncleFredShader.totalElapsed.value[0] = totalElapsed;
+		else
+			uncleFredShader.totalElapsed.value = [totalElapsed];
 	}
 }
