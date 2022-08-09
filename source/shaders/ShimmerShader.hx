@@ -4,7 +4,7 @@ import flixel.system.FlxAssets.FlxShader;
 
 class ShimmerShader extends FlxShader
 {
-	@:glFragmentShader('
+	@:glFragmentSource('
         #pragma header
 
         void main() {
