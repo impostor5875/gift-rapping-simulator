@@ -8,7 +8,7 @@ class ShimmerShader extends FlxShader
         #pragma header
 
         void main() {
-            gl_FragColor = new vec4(0.5,0.5,0.5,0.5);
+            gl_FragColor = vec4(0.5,0.5,0.5,0.5);
         }
     ')
 	public function new()
