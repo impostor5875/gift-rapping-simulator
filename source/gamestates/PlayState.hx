@@ -17,6 +17,7 @@ class PlayState extends FlxState
 		uncleFred = new FlxSprite().loadGraphic(Paths.png('uncle fred'));
 		uncleFred.screenCenter();
 		add(uncleFred);
+		uncleFred.antialiasing = true;
 
 		uncleFredShader = new ShimmerShader();
 		uncleFred.shader = uncleFredShader;
