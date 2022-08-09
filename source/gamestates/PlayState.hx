@@ -3,6 +3,7 @@ package gamestates;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import shaders.ShimmerShader;
 
 class PlayState extends FlxState
 {
@@ -15,6 +16,8 @@ class PlayState extends FlxState
 		uncleFred = new FlxSprite().loadGraphic(Paths.png('uncle fred'));
 		uncleFred.screenCenter();
 		add(uncleFred);
+
+		uncleFred.shader = new ShimmerShader();
 	}
 
 	public function addFredAlpha(alphaAddition:Float)
