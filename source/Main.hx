@@ -14,5 +14,7 @@ class Main extends Sprite
 		super();
 		addChild(new FlxGame(0, 0, PlayState, 1, fpsCounter, fpsCounter, true, false));
 		addChild(new FPS(10, 10, 0xFFFFFFFF));
+
+		trace('he approves');
 	}
 }
